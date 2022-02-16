@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.weather4u">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACTION_MANAGE_OVERLAY_PERMISSION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/wea"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/wea"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Weather4U"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".view.activity.AddAlert"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.FavoriteWeatherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.SplashScreenActivity"
+            android:exported="false"
+            android:label="@string/title_activity_splash_screen"
+            android:theme="@style/Theme.Weather4U.NoActionBar" />
+        <activity
+            android:name=".view.activity.WeatherActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

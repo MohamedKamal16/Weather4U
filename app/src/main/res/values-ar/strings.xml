@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_weather">الطقس</string>
+    <string name="title_favorite">المفضله</string>
+    <string name="title_notifications">منبه</string>
+    <string name="title_setting">اعدادات</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="THE_WEATHER">اخبار الطقس</string>
+    <string name="FOR">من</string>
+    <string name="YOU">اجلك</string>
+    <string name="LANGUAGE">لغه</string>
+    <string name="ARABIC">العربيه</string>
+    <string name="ENGLISH">English</string>
+    <string name="NOTIFICATION">اشعارات</string>
+    <string name="IMPERIAL">Imperial</string>
+    <string name="METRIC">متري</string>
+    <string name="UNIT">وحده قياس</string>
+    <string name="SAVE">حفظ</string>
+    <string name="Daily">الطقس اليومي</string>
+    <string name="Hourly">الطقس خلال الساعه</string>
+    <string name="CITY">مدينه</string>
+    <string name="DATE">توقيت</string>
+    <string name="Humidity">رطوبه</string>
+    <string name="Precipitation">التساقط</string>
+    <string name="Pressure">ضغط</string>
+    <string name="Visibility">الرؤيه</string>
+    <string name="Temperature">درجه الحراره</string>
+    <string name="MAX"> العظمى</string>
+    <string name="MIN"> الصغرى</string>
+    <string name="HPA">هكتو باسكال</string>
+
+
+
+
+    <string name="wind">الرياح</string>
+    <string name="clouds">السحب</string>
+    <string name="meterSec">م/ث</string>
+    <string name="mileHr">ميل/ساعه</string>
+    <string name="detect">موقع</string>
+    <!-- Preference Titles -->
+    <string name="location_header" >الموقع</string>
+    <string name="units_header" >وحدات القياس</string>
+    <string name="language_header">اللغه</string>
+    <!-- Location Preferences -->
+    <string name="location_title" translatable="false">اختر موقع</string>
+
+    <!-- Unit Preferences -->
+    <string name="units_title" translatable="false">اختر وحده قياس</string>
+
+    <!-- Speed Preferences -->
+    <string name="mh" translatable="false">ميل/الساعه</string>
+    <string name="ms" translatable="false">متر/الثانيه</string>
+    <!-- language Preferences -->
+    <string name="language_title"> اختر لغه </string>
+
+    <!-- favorite -->
+    <string name="caution">احترس</string>
+    <string name="alertDeleteMessage">هل تريد حذف هذا الموقع</string>
+    <string name="yes">نعم</string>
+    <string name="no" >لا</string>
+    <!-- Alert -->
+    <string name="friday">الجمعه</string>
+    <string name="thursday">الخميس</string>
+    <string name="saturday">السبت</string>
+    <string name="sunday">الاحد</string>
+    <string name="monday">الاتنين</string>
+    <string name="tuesday">الثلاثاء</string>
+    <string name="wednesday">الاربعاء</string>
+    <string name="alertEventHint">تحديد التنبيه</string>
+    <string name="alertType">نوع التنبيه</string>
+    <string name="alertTimeLbl">التوقيت </string>
+    <string name="addBtn">اضافه تنبيه</string>
+
+</resources>

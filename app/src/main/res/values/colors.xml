@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#070101</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="CrayolaBlue">#1d71f2</color>
+    <color name="ButtonBlue">#1c9cf6</color>
+    <color name="SpiroDiscoBall">#19c3fb</color>
+    <color name="Bubbles">#e3f4fe</color>
+    <color name="BrandeisBlue">#006cff</color>
+    <color name="ProcessCyan">#0fb5ee</color>
+    <color name="VividSkyBlue">#00d3f9</color>
+</resources>

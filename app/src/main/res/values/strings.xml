@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name" translatable="false">Weather4U</string>
+    <string name="title_weather">Weather</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_notifications">Alert</string>
+    <string name="title_setting">Setting</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="THE_WEATHER">The Weather</string>
+    <string name="FOR">4</string>
+    <string name="YOU">U</string>
+    <string name="LANGUAGE">Language</string>
+    <string name="ARABIC">Arabic</string>
+    <string name="ENGLISH">English</string>
+    <string name="NOTIFICATION">Notification</string>
+    <string name="IMPERIAL">Imperial</string>
+    <string name="METRIC">Metric</string>
+    <string name="UNIT">Unit</string>
+    <string name="SAVE">Save</string>
+    <string name="Daily">DailyWeather</string>
+    <string name="Hourly">HourlyWeather</string>
+    <string name="CITY">City</string>
+    <string name="DATE">date-time</string>
+    <string name="Humidity">Humidity</string>
+    <string name="Precipitation">Precipitation</string>
+    <string name="Pressure">Pressure</string>
+    <string name="Visibility">Visibility</string>
+    <string name="Temperature">Temp</string>
+    <string name="MAX">maxTemp</string>
+    <string name="MIN">minTemp</string>
+    <string name="HPA">hPa</string>
+
+    <string name="errorLocation" translatable="false">er</string>
+    <string name="locationMessage" translatable="false">lm</string>
+    <string name="getPermission" translatable="false">gp</string>
+    <string name="ignore" translatable="false">ig</string>
+
+    <string name="wind">wind</string>
+    <string name="clouds">clouds</string>
+    <string name="meterSec">meter/sec</string>
+    <string name="mileHr">mile/hr</string>
+    <string name="detect">loc</string>
+    <!-- Preference Titles -->
+    <string name="location_header">Location</string>
+    <string name="units_header">Unit</string>
+    <string name="language_header">Language</string>
+
+    <!-- Location Preferences -->
+    <string name="location_title">Default location</string>
+
+    <!-- Unit Preferences -->
+    <string name="units_title">Default unit</string>
+    <string name="fahrenheit" translatable="false">°F</string>
+    <string name="celsius" translatable="false">°C</string>
+    <string name="kelvin" translatable="false">°K</string>
+
+    <!-- Speed Preferences -->
+    <string name="mh">mile/h</string>
+    <string name="ms">m/s</string>
+    <!-- language Preferences -->
+    <string name="language_title">Default language</string>
+
+    <!-- favorite -->
+    <string name="caution">Caution</string>
+    <string name="alertDeleteMessage">Do You Want To Delete This Location</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+
+    <!-- Alert -->
+    <string name="friday">Friday</string>
+    <string name="thursday">thursday</string>
+    <string name="saturday">saturday</string>
+    <string name="sunday">sunday</string>
+    <string name="monday">monday</string>
+    <string name="tuesday">tuesday</string>
+    <string name="wednesday">wednesday</string>
+    <string name="alertEventHint">Event</string>
+    <string name="alertType">AlertType</string>
+    <string name="alertTimeLbl">AlertTime</string>
+    <string name="addBtn">Add</string>
+
+    <string name="channel_name" translatable="false">Weather4U</string>
+    <string name="channel_description" translatable="false">Home</string>
+    <string name="Day">Day</string>
+
+
+</resources>
