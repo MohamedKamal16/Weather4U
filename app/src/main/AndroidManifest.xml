@@ -20,18 +20,18 @@
         android:theme="@style/Theme.Weather4U"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".view.activity.AddAlert"
+            android:name=".ui.activity.AddAlert"
             android:exported="false" />
         <activity
-            android:name=".view.activity.FavoriteWeatherActivity"
+            android:name=".ui.activity.FavoriteWeatherActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.SplashScreenActivity"
+            android:name=".ui.activity.SplashScreenActivity"
             android:exported="false"
             android:label="@string/title_activity_splash_screen"
             android:theme="@style/Theme.Weather4U.NoActionBar" />
         <activity
-            android:name=".view.activity.WeatherActivity"
+            android:name=".ui.activity.WeatherActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

@@ -1,11 +1,8 @@
 package com.example.weather4u.model.dataclass
 
 import androidx.room.Embedded
-import androidx.room.TypeConverters
-import com.example.weather4u.model.dataclass.typeConvertor.WeatherTypeConverter
 import com.google.gson.annotations.SerializedName
 
-@TypeConverters(WeatherTypeConverter::class)
 data class HourlyItem(
 
 	@field:SerializedName("temp")

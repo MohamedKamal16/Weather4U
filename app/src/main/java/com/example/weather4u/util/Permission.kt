@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
+import com.example.weather4u.util.Constant.PERMISSIONS_REQUEST_LOCATION
 
 object Permission {
      fun checkPermission(context: Context):Boolean{
