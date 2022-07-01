@@ -5,14 +5,11 @@ import com.example.weather4u.model.dataclass.AlertsItem
 import com.example.weather4u.model.dataclass.Current
 import com.example.weather4u.model.dataclass.DailyItem
 import com.example.weather4u.model.dataclass.HourlyItem
-import com.example.weather4u.model.dataclass.typeConvertor.AlertTypeConverter
-import com.example.weather4u.model.dataclass.typeConvertor.DailyTypeConverter
-import com.example.weather4u.model.dataclass.typeConvertor.HourlyTypeConverter
 import com.google.gson.annotations.SerializedName
 
 @Entity(primaryKeys = ["lon", "lat"])
 @JvmSuppressWildcards
-@TypeConverters(AlertTypeConverter::class, DailyTypeConverter::class, HourlyTypeConverter::class)
+
 data class WeatherResponse(
 
     @field:SerializedName("alerts")

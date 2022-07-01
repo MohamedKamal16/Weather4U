@@ -9,10 +9,10 @@ interface AlertDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(alert: AlertEntity)
 
-    @Query("SELECT * FROM Alert")
+    @Query("SELECT * FROM AlertEntity")
     fun getAll(): List<AlertEntity>
 
-    @Query("SELECT * FROM Alert WHERE enabled=:enabled and alertTime=:alertTime")
+    @Query("SELECT * FROM AlertEntity WHERE enabled=:enabled and alertTime=:alertTime")
     fun getSome(alertTime: String, enabled: Boolean): List<AlertEntity>
 
     @Delete

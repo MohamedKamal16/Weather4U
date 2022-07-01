@@ -3,8 +3,7 @@ package com.example.weather4u.model.local.alertRoom
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
-@Entity(tableName = "Alert")
+@Entity
 class AlertEntity {
     @PrimaryKey(autoGenerate = true)
     var id :Int = 0

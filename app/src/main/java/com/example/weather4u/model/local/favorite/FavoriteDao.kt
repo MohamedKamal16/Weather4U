@@ -8,7 +8,7 @@ interface FavoriteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(favorite: FavoriteEntity)
 
-    @Query("SELECT * FROM Favorite")
+    @Query("SELECT * FROM FavoriteEntity")
     fun getAllFev(): List<FavoriteEntity>
 
     @Delete

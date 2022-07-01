@@ -3,12 +3,20 @@ package com.example.weather4u.util
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
+import com.example.weather4u.util.Constant.CURRENT_LATITUDE
+import com.example.weather4u.util.Constant.CURRENT_LONGITUDE
+import com.example.weather4u.util.Constant.Fav_LATITUDE
+import com.example.weather4u.util.Constant.Fav_LONGITUDE
+import com.example.weather4u.util.Constant.Last_LATITUDE
+import com.example.weather4u.util.Constant.Last_LONGITUDE
+import com.example.weather4u.util.Constant.PREF_CURRENT_LOCATION
 
 object Preferences {
 
     //create preference for location
      fun createLocationPreference(context: Context): SharedPreferences {
-        return context.getSharedPreferences(PREF_CURRENT_LOCATION, AppCompatActivity.MODE_PRIVATE)
+        return context.getSharedPreferences(
+            PREF_CURRENT_LOCATION, AppCompatActivity.MODE_PRIVATE)
     }
 
 
@@ -53,7 +61,7 @@ object Preferences {
         val pref=createLocationPreference(context)
         val lastLon=  pref.getFloat(Last_LONGITUDE,0.0F)
         return lastLon.toDouble()
-    }*/
+    }
     fun getCurrentLat(context:Context):Double{
         val pref=createLocationPreference(context)
         val currentLat=  pref.getFloat(CURRENT_LATITUDE,0.0F)
@@ -64,5 +72,5 @@ object Preferences {
         val currentLon =  pref.getFloat(CURRENT_LONGITUDE,0.0F)
         return currentLon.toDouble()
     }
-
+*/
   }
