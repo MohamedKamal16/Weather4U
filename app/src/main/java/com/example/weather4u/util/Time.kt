@@ -18,7 +18,7 @@ object Time {
         }
         fun currentTime(timestamp: Long?) : String{
             val sdf = java.text.SimpleDateFormat("dd-MM-yyyy HH:mm a")
-            val date = java.util.Date(timestamp!! * 1000)
+            val date = java.util.Date(timestamp?.times(1000) ?: 1)
 
             return sdf.format(date)
         }

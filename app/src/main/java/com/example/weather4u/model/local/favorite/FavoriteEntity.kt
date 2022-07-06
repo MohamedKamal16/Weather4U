@@ -5,10 +5,11 @@ import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity
-class FavoriteEntity  {
+class FavoriteEntity(
+    var title: String?,
+    var lat: Double?,
+    var lon: Double?,
+) {
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
-    lateinit var title: String
-    var lat: Double = 0.0
-    var lon: Double = 0.0
+    var id: Int? = null
 }

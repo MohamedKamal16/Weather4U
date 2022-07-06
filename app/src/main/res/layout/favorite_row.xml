@@ -1,59 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:paddingTop="10dp">
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="10dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/favorite_loc"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="@color/white">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:background="@color/white">
+        <TextView
+            android:id="@+id/favoriteTitleLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="TextView"
+            android:textColor="#0B1A6A"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/FavDeleteButton"
+            app:layout_constraintStart_toEndOf="@+id/FavDeleteButton"
+            app:layout_constraintTop_toTopOf="@+id/FavDeleteButton" />
 
-            <TextView
-                android:id="@+id/favoriteTitleLbl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
-                android:text="TextView"
-                android:textColor="#0B1A6A"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/FavDeleteButton"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/ic_dialog_close_dark"
-                app:backgroundTint="#015291"
-                app:fabSize="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.955"
-                app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/FavDeleteButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/location"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

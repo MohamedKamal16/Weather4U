@@ -1,31 +1,64 @@
 package com.example.weather4u.ui.viewModel
-/*
+
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
 import com.example.weather4u.model.local.weatherRoom.WeatherResponse
-import com.example.weather4u.model.repository.WeatherRepository
+import com.example.weather4u.repository.WeatherRepository
+import com.example.weather4u.util.NetworkCheck.hasInternetConnection
+import com.example.weather4u.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import okio.IOException
+import retrofit2.Response
+import javax.inject.Inject
+
+@HiltViewModel
+class WeatherFragmentViewModel@Inject constructor(
+    private val repo:WeatherRepository,
+    application: Application) :BaseViewModel(application) {
+
+    //LiveData
+    private val _weatherData: MutableLiveData<Resource<WeatherResponse>> = MutableLiveData()
+    val weatherLiveData:LiveData<Resource<WeatherResponse>>
+         get() =_weatherData
 
 
-class WeatherFragmentViewModel(application: Application): AndroidViewModel(application) {
+    fun getWeather(lat: Double?, lon: Double?, units: String, lang: String) = viewModelScope.launch {
+        safeWeatherCall(lat, lon, units, lang)
+    }
 
-    private val localData=LocalDatabase.getInstance(application)
-    private val localData2=FavoriteInstance.getInstance(application)
-    private val localData3=AlertInstance.getInstance(application)
-     val repository :WeatherRepository= WeatherRepository(localData,localData2,localData3)
+    private suspend fun safeWeatherCall( lat: Double?, lon: Double?, units: String, lang: String) {
+        _weatherData.postValue(Resource.Loading())
+        try {
+            if (hasInternetConnection(context)) {
+                val response = repo.getWeather(lat, lon, units, lang)
+                //post data in mutable live data
+                _weatherData.postValue(handleWeatherResponse(response))
+            } else {
+                _weatherData.postValue(Resource.Error("NO INTERNET CONNECTION"))
+            }
+        } catch (t: Throwable) {
+            when (t) {
+                is IOException -> _weatherData.postValue(Resource.Error("NETWORK FAILURE"))
+                else -> _weatherData.postValue(Resource.Error("CONVERSION ERROR"))
+            }
+
+        }
+    }
+
+    private fun handleWeatherResponse(response: Response<WeatherResponse>): Resource<WeatherResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let {
+                return Resource.Success(it)
+            }
+        }
+        return Resource.Error(response.message())
+    }
 
 
 
-    fun loadAllData(lat: Double, lon: Double, lang :String, unit:String )=repository.loadAllData(lat, lon, lang, unit)
-
-    fun getWeatherLiveDat():MutableLiveData<WeatherResponse> =repository.getWeatherLiveDat()
-    fun getDataOffline(lat: Double, lon: Double, lang :String, unit:String )=repository.getDataOffline(lat, lon, lang, unit)
 
 
 
 
-
-
-
-
-}*/
+}

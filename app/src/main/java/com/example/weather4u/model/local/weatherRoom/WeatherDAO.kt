@@ -3,6 +3,7 @@ package com.example.weather4u.model.local.weatherRoom
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
+//TODO DELETE
 @Dao
 interface WeatherDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

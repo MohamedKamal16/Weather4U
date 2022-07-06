@@ -1,36 +1,27 @@
 package com.example.weather4u.ui.viewModel
-/*
+
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.weather4u.model.local.favorite.FavoriteEntity
-import com.example.weather4u.model.local.weatherRoom.WeatherResponse
-import com.example.weather4u.model.repository.WeatherRepository
+import com.example.weather4u.repository.WeatherRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class FavoriteFragmentViewModel(application: Application) : AndroidViewModel(application)  {
-    private val localData= LocalDatabase.getInstance(application)
-    private val localData2=FavoriteInstance.getInstance(application)
-    private val localData3= AlertInstance.getInstance(application)
-    val repository : WeatherRepository = WeatherRepository(localData,localData2,localData3)
+@HiltViewModel
+class FavoriteFragmentViewModel@Inject constructor(
+    private val repo: WeatherRepository, application: Application) :BaseViewModel(application){
 
-    fun loadFavData(lat: Double, lon: Double, lang :String, unit:String )=repository.loadFavData(lat, lon, lang, unit)
+    fun insertUpdate(favorite: FavoriteEntity)=viewModelScope.launch {
+        repo.insert(favorite)
+    }
 
-    fun getWeatherFavLiveDat():MutableLiveData<WeatherResponse> =repository.getWeatherFavLiveDat()
+    fun getAll()= repo.getAllFev()
 
-    fun insertUpdate(favorite: FavoriteEntity)=repository.insertUpdate(favorite)
-
-    fun getAll() =repository.getAllFavorite()
-
-    fun delete(favorite: FavoriteEntity)=repository.deleteFav(favorite)
-
-    fun getFavoriteInfo(): LiveData<List<FavoriteEntity>> =repository.getFavoriteInfo()
-
-
-
-
-
+    fun delete(favorite: FavoriteEntity)=
+        viewModelScope.launch {
+            repo.delete(favorite)
+        }
 
 }
-*/

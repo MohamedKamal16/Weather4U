@@ -29,17 +29,9 @@ class WeatherRepository @Inject constructor(
         lang: String
     ) = api.getWeatherDetails(lat, lon, units, lang)
 
-    //weather Database
-    suspend fun insert(weatherResponse: WeatherResponse?) = weatherDAO.insert(weatherResponse)
-    fun getAllWeatherData() = weatherDAO.getAllWeatherData()
-    suspend fun deleteLocationWeather(lat: Double, lon: Double) =
-        weatherDAO.deleteLocationWeather(lat, lon)
-
-    fun getLocationWeather(lat: Double, lon: Double) = weatherDAO.getLocationWeather(lat, lon)
-
     //favorite data base
     suspend fun insert(favorite: FavoriteEntity) = favoriteDao.insert(favorite)
-    private fun getAllFev(): List<FavoriteEntity> = favoriteDao.getAllFev()
+    fun getAllFev() = favoriteDao.getAllFev()
     suspend fun delete(favorite: FavoriteEntity) = favoriteDao.delete(favorite)
 
     //Alert DataBase
@@ -49,6 +41,15 @@ class WeatherRepository @Inject constructor(
         alertDao.getSome(alertTime, enabled)
 
     suspend fun delete(alert: AlertEntity) = alertDao.delete(alert)
+
+    /*  //weather Database
+      suspend fun insert(weatherResponse: WeatherResponse?) = weatherDAO.insert(weatherResponse)
+      fun getAllWeatherData() = weatherDAO.getAllWeatherData()
+      suspend fun deleteLocationWeather(lat: Double, lon: Double) =
+          weatherDAO.deleteLocationWeather(lat, lon)
+
+      fun getLocationWeather(lat: Double, lon: Double) = weatherDAO.getLocationWeather(lat, lon)
+  */
 
 
     /*   //method to handle data

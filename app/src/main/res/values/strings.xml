@@ -49,13 +49,14 @@
 
     <!-- Unit Preferences -->
     <string name="units_title">Default unit</string>
+    <string name="kelvin" translatable="false">°K</string>
     <string name="fahrenheit" translatable="false">°F</string>
     <string name="celsius" translatable="false">°C</string>
-    <string name="kelvin" translatable="false">°K</string>
 
     <!-- Speed Preferences -->
     <string name="mh">mile/h</string>
     <string name="ms">m/s</string>
+
     <!-- language Preferences -->
     <string name="language_title">Default language</string>
 
@@ -81,6 +82,9 @@
     <string name="channel_name" translatable="false">Weather4U</string>
     <string name="channel_description" translatable="false">Home</string>
     <string name="Day">Day</string>
+    <string name="open_gps">PLEASE OPEN YOUR GPS</string>
+    <string name="open">OPEN</string>
+    <string name="no_permission">NO Permission Granted enjoy our other service</string>
 
 
 </resources>

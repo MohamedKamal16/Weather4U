@@ -28,13 +28,27 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_current"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/current_layout" />
+
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_daily"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dayTxt" />
+                app:layout_constraintTop_toBottomOf="@+id/dayTxt"
+                tools:listitem="@layout/daily_row" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_hourly"
@@ -48,123 +62,6 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardview_basic"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                app:cardBackgroundColor="#48FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/main_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/city"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="4dp"
-                        android:text="@string/CITY"
-                        android:textColor="#0B1A6A"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_conversion_absoluteHeight="19dp"
-                        tools:layout_conversion_absoluteWidth="24dp" />
-
-                    <TextView
-                        android:id="@+id/date_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginBottom="19dp"
-                        android:text="@string/DATE"
-                        android:textColor="#0B1A6A"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/city"
-                        app:layout_constraintVertical_bias="1.0"
-                        tools:layout_conversion_absoluteHeight="19dp"
-                        tools:layout_conversion_absoluteWidth="59dp" />
-
-                    <TextView
-                        android:id="@+id/tv_desc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#0B1A6A"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/date_time"
-                        app:layout_constraintStart_toStartOf="@+id/date_time"
-                        app:layout_constraintTop_toBottomOf="@+id/city"
-                        app:layout_constraintVertical_bias="0.246"
-                        tools:layout_conversion_absoluteHeight="19dp"
-                        tools:layout_conversion_absoluteWidth="71dp" />
-
-                    <TextView
-                        android:id="@+id/temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="60dp"
-                        android:textColor="#0B1A6A"
-                        android:textSize="50sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.462"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_conversion_absoluteHeight="19dp"
-                        tools:layout_conversion_absoluteWidth="19dp"
-                        tools:text="30" />
-
-                    <TextView
-                        android:id="@+id/clouds"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="16dp"
-                        android:text="Clouds"
-                        android:textColor="#0B1A6A"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-                    <TextView
-                        android:id="@+id/windSpeed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:textColor="#0B1A6A"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/clouds"
-                        app:layout_constraintStart_toStartOf="@+id/clouds"
-                        app:layout_constraintTop_toBottomOf="@+id/clouds" />
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_launcher"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.918"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/city"
-                        tools:layout_conversion_absoluteHeight="19dp"
-                        tools:layout_conversion_absoluteWidth="72dp" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/details"
@@ -316,7 +213,7 @@
                 android:id="@+id/dayTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif"
                 android:paddingStart="10dp"
                 android:text="@string/Daily"
@@ -326,7 +223,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardview_basic" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_current" />
 
             <TextView
                 android:id="@+id/textView5"
