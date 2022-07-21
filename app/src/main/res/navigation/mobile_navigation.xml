@@ -15,19 +15,22 @@
         android:id="@+id/navigation_favorite"
         android:name="com.example.weather4u.ui.fragment.FavoriteFragment"
         android:label="@string/title_favorite"
-        tools:layout="@layout/fragment_favorite" />
-
-    <fragment
-        android:id="@+id/AlertFragment"
-        android:name="com.example.weather4u.ui.fragment.AlertFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_alert" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_navigation_favorite_to_favoriteWeatherFragment"
+            app:destination="@id/favoriteWeatherFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_setting"
         android:name="com.example.weather4u.ui.fragment.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@xml/root_preferences"  />
+    <fragment
+        android:id="@+id/favoriteWeatherFragment"
+        android:name="com.example.weather4u.ui.fragment.FavoriteWeatherFragment"
+        android:label="favorite_weather_fragment"
+        tools:layout="@layout/favorite_weather_fragment" />
 
 
 </navigation>

@@ -1,7 +1,12 @@
 package com.example.weather4u.util
 
+import java.util.*
+
 
 object Time {
+    fun getAppTime():Date{
+        return Calendar.getInstance().time
+    }
 
         fun timeConverter(timestamp: Long?) : String{
             val sdf = java.text.SimpleDateFormat("hh:mm a")
@@ -18,8 +23,14 @@ object Time {
         }
         fun currentTime(timestamp: Long?) : String{
             val sdf = java.text.SimpleDateFormat("dd-MM-yyyy HH:mm a")
-            val date = java.util.Date(timestamp!! * 1000)
+            val date = java.util.Date(timestamp?.times(1000) ?: 1)
 
             return sdf.format(date)
         }
+    fun time(timestamp: Long?) : String{
+        val sdf = java.text.SimpleDateFormat("HH:mm a")
+        val date = java.util.Date(timestamp?.times(1000) ?: 1)
+
+        return sdf.format(date)
+    }
     }

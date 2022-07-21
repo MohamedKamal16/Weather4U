@@ -4,10 +4,12 @@ import android.content.Context
 import androidx.room.Room
 import com.example.weather4u.model.local.WeatherDataBase
 import com.example.weather4u.util.Constant.ROOM_DATABASE_NAME
+import com.google.android.gms.location.FusedLocationProviderClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ServiceScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -25,21 +27,17 @@ object LocalDataModule {
         ROOM_DATABASE_NAME
     ).build()
 
-
-
-    @Singleton
-    @Provides
-    fun provideWeather(db: WeatherDataBase) = db.getWeatherDao()
-
     @Singleton
     @Provides
     fun provideFavorite(db: WeatherDataBase) = db.getFavoriteDao()
 
+
+
     @Singleton
     @Provides
-    fun provideAlert(db: WeatherDataBase) = db.getAlertDao()
-
-
+    fun provideFusedLocationProviderClient(
+        @ApplicationContext app:Context
+    )= FusedLocationProviderClient(app)
 
 
 

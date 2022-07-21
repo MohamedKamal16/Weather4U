@@ -1,24 +1,27 @@
 package com.example.weather4u.ui.fragment
 
-import android.app.Activity
 import android.content.Intent
-import android.content.res.Configuration
-import android.content.res.Resources
-import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.preference.*
 import com.example.weather4u.R
+import com.example.weather4u.ui.activity.WeatherActivity
+import com.example.weather4u.util.Constant.CURRENT_LOCATION
+import com.example.weather4u.util.Constant.LANGUAGE
+import com.example.weather4u.util.Constant.Location
 import com.example.weather4u.util.Constant.PLACE_API_KEY
-import com.example.weather4u.util.Constant.REQUEST_CODE
-import com.example.weather4u.util.Permission
+import com.example.weather4u.util.Constant.UNIT
+import com.example.weather4u.util.LocationPermission
+import com.example.weather4u.util.LocationPreferences.setSearchLocationPreference
+import com.example.weather4u.util.SettingFragmentPreference.setLocale
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
-import java.util.*
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
@@ -27,94 +30,85 @@ class SettingsFragment : PreferenceFragmentCompat() {
     private lateinit var unitListPreference: ListPreference
     private lateinit var languageListPreference: ListPreference
 
+//registerForActivityResult TO USE INSTEAD OF ON ACTIVITY RESULT THAT DEPRECATED IN FRAGMENT
+    private val activityResultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(),
+        ActivityResultCallback { activityResult ->
+            val data: Intent? = activityResult.data
+            when (activityResult.resultCode) {
+                AutocompleteActivity.RESULT_OK -> {
+                    data?.let {
+                        val place = Autocomplete.getPlaceFromIntent(data)
+                        locationEditTextPreference.text = place.address
+                        locationEditTextPreference.isVisible = true
+                        val pref = PreferenceManager.getDefaultSharedPreferences(requireContext())
+                        setSearchLocationPreference(pref,place.latLng!!.latitude,place.latLng!!.longitude)
+                        pref.edit().putBoolean(CURRENT_LOCATION, false).apply()
+                    }
+                }
+                AutocompleteActivity.RESULT_ERROR -> {
+                    Log.i("place", "RESULT_ERROR ")
+                }
+                AutocompleteActivity.RESULT_CANCELED -> {
+                    Log.i("place", "RESULT_CANCELED")
+                }
+            }
+        }
+    )
+
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
         //place autocomplete
         Places.initialize(requireContext(), PLACE_API_KEY)
         val fieldList = listOf(Place.Field.ADDRESS, Place.Field.LAT_LNG, Place.Field.NAME)
-        val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fieldList).build(requireContext())
+        val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fieldList)
+            .build(requireContext())
         val pref = PreferenceManager.getDefaultSharedPreferences(requireContext())
 
         //preference settings
-        locationListPreference = findPreference("location")!!
-        unitListPreference = findPreference("unit")!!
-        languageListPreference = findPreference("language")!!
+        locationListPreference = findPreference(Location)!!
+        unitListPreference = findPreference(UNIT)!!
+        languageListPreference = findPreference(LANGUAGE)!!
         locationEditTextPreference = findPreference("location_address")!!
-        locationEditTextPreference.isVisible = !pref.getBoolean("currentLocation", true)
+        locationEditTextPreference.isVisible = !pref.getBoolean(CURRENT_LOCATION, true)
 
         //setting logic
-        locationListPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, value ->
-            if(value.toString() == "other"){
-                startActivityForResult(intent, REQUEST_CODE)
-            }else{
-                if(Permission.checkPermission(requireContext())){
-                    pref.edit().putBoolean("currentLocation", true).apply()
-                    locationEditTextPreference.isVisible = false
-
-                }else{
-                    Permission.requestPermission(requireActivity())
-                    Toast.makeText(requireContext(), "NO Permission Granted enjoy our other service", Toast.LENGTH_LONG).show()
-                }
-
-
-            }
-            true
-        }
-
-        unitListPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, value ->
-            Log.i("call", value.toString())
-            pref.edit().putString("unit", value.toString()).apply()
-            true
-        }
-
-        languageListPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, value ->
-            Log.i("call", value.toString())
-            pref.edit().putString("language", value.toString()).apply()
-            setLang(value.toString())
-            true
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == 100) {
-            when (resultCode) {
-                Activity.RESULT_OK -> {
-                    data?.let {
-                        val place = Autocomplete.getPlaceFromIntent(data)
-                        locationEditTextPreference.text = place.address
-                        locationEditTextPreference.isVisible = true
-
-                        val pref = PreferenceManager.getDefaultSharedPreferences(requireContext())
-                        pref.edit().putFloat("lat", place.latLng!!.latitude.toFloat()).apply()
-                        pref.edit().putFloat("lon", place.latLng!!.longitude.toFloat()).apply()
-                        pref.edit().putBoolean("currentLocation", false).apply()
+        locationListPreference.onPreferenceChangeListener =
+            Preference.OnPreferenceChangeListener { _, value ->
+                if (value.toString() == "other") {
+                    activityResultLauncher.launch(intent)
+                } else {
+                    if (LocationPermission.checkPermission(requireContext())) {
+                        pref.edit().putBoolean(CURRENT_LOCATION, true).apply()
+                        locationEditTextPreference.isVisible = false
+                    } else {
+                        LocationPermission.requestPermission(requireActivity())
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.no_permission),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
-                AutocompleteActivity.RESULT_ERROR -> {
-                    // TODO: Handle the error.
-                    data?.let {
-                        val status = Autocomplete.getStatusFromIntent(data)
-                    }
-                }
-                Activity.RESULT_CANCELED -> {
-
-                }
+                true
             }
-            return
-        }
-        super.onActivityResult(requestCode, resultCode, data)
-    }
 
-    private fun setLang(code: String) {
-        val locale = Locale(code)
-        Locale.setDefault(locale)
-        val resources: Resources = requireContext().resources
-        val config: Configuration = resources.configuration
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
+        unitListPreference.onPreferenceChangeListener =
+            Preference.OnPreferenceChangeListener { _, value ->
+                Log.i("call", value.toString())
+                pref.edit().putString(UNIT, value.toString()).apply()
+                true
+            }
 
+        languageListPreference.onPreferenceChangeListener =
+            Preference.OnPreferenceChangeListener { _, value ->
+                Log.i("call", value.toString())
+                pref.edit().putString(LANGUAGE, value.toString()).apply()
+                setLocale(requireContext(), value.toString())
+                (activity as WeatherActivity).recreate()
+                true
+            }
     }
-    private lateinit var locationManager : LocationManager
 
 }

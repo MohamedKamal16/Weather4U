@@ -70,5 +70,9 @@
     <string name="alertType">نوع التنبيه</string>
     <string name="alertTimeLbl">التوقيت </string>
     <string name="addBtn">اضافه تنبيه</string>
+    <string name="Day">يوم</string>
+    <string name="open_gps">من فضلك قم بتشغيل تحديد الموقع</string>
+    <string name="open">فتح</string>
+    <string name="no_permission">لم يتم منح اذن الموقع تمتع بباقي خدماتنا</string>
 
 </resources>
