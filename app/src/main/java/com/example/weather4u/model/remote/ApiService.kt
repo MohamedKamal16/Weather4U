@@ -1,6 +1,6 @@
 package com.example.weather4u.model.remote
 
-import com.example.weather4u.model.local.weatherRoom.WeatherResponse
+import com.example.weather4u.model.dataclass.WeatherResponse
 import com.example.weather4u.util.Constant.API_KEY
 import com.example.weather4u.util.Constant.MINUTELY
 import retrofit2.Response

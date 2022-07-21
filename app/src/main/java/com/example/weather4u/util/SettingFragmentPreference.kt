@@ -17,23 +17,10 @@ object SettingFragmentPreference {
          val sp= PreferenceManager.getDefaultSharedPreferences(context)
         return sp.getString(UNIT, "metric").toString()
     }
-
-     fun iSCurrentLocation(context: Context):Boolean{
-         val sp= PreferenceManager.getDefaultSharedPreferences(context)
-         return sp.getBoolean(CURRENT_LOCATION, true)
-
-    }
-    fun getLat(context: Context):Float{
+    fun isNotificationEnabled(context: Context): Boolean {
         val sp= PreferenceManager.getDefaultSharedPreferences(context)
-        return sp.getFloat(search_LATITUDE, 0.0F)
-
+        return sp.getBoolean("NOTIFICATION", false)
     }
-    fun getLong(context: Context):Float{
-        val sp= PreferenceManager.getDefaultSharedPreferences(context)
-        return sp.getFloat(search_LONGITUDE, 0.0F)
-
-    }
-
 
     /* fun loadLanguage(context: Context): String {
          val sp= PreferenceManager.getDefaultSharedPreferences(context)

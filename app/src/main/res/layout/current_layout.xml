@@ -69,33 +69,18 @@
             tools:text="30" />
 
         <TextView
-            android:id="@+id/clouds"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:text="Clouds"
-            android:textColor="#0B1A6A"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-        <TextView
             android:id="@+id/windSpeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             android:textColor="#0B1A6A"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/clouds"
-            app:layout_constraintStart_toStartOf="@+id/clouds"
-            app:layout_constraintTop_toBottomOf="@+id/clouds" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/icon_weather"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="5dp"

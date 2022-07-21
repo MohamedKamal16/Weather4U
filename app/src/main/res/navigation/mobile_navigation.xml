@@ -22,12 +22,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/AlertFragment"
-        android:name="com.example.weather4u.ui.fragment.AlertFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_alert" />
-
-    <fragment
         android:id="@+id/navigation_setting"
         android:name="com.example.weather4u.ui.fragment.SettingsFragment"
         android:label="SettingsFragment"

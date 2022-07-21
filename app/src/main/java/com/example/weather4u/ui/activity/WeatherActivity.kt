@@ -22,7 +22,9 @@ import com.example.weather4u.util.LocationPermission.isLocationEnabled
 import com.example.weather4u.util.LocationPermission.requestPermission
 import com.example.weather4u.util.LocationPreferences
 import com.example.weather4u.util.LocationPreferences.setLastLocationPreference
+import com.example.weather4u.util.SettingFragmentPreference.isNotificationEnabled
 import com.example.weather4u.util.SettingFragmentPreference.onAttach
+import com.example.weather4u.util.Time.getAppTime
 import com.google.android.gms.location.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -47,15 +49,15 @@ class WeatherActivity : AppCompatActivity() {
         navView = binding.navView
         navBind()
         getCurrentLocation()
-
+        getAppTime()
+        Log.d("Time","time is "+getAppTime())
     }
 
     private fun navBind() {
         navController = findNavController(R.id.newsNavHostFragment)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.AlertFragment) {
-                //    binding.navView.visibility = View.GONE
-                Toast.makeText(this, "this", Toast.LENGTH_SHORT).show()
+            if (destination.id == R.id.favoriteWeatherFragment) {
+                   binding.navView.visibility = View.GONE
             } else {
                 binding.navView.visibility = View.VISIBLE
             }
@@ -134,6 +136,8 @@ class WeatherActivity : AppCompatActivity() {
             setLastLocationPreference(this@WeatherActivity, lastLocation.latitude, lastLocation.longitude)
         }
     }
+
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,

@@ -36,8 +36,8 @@
 
     <string name="wind">wind</string>
     <string name="clouds">clouds</string>
-    <string name="meterSec">meter/sec</string>
-    <string name="mileHr">mile/hr</string>
+    <string name="meterSec">m/s</string>
+    <string name="mileHr">mil/hr</string>
     <string name="detect">loc</string>
     <!-- Preference Titles -->
     <string name="location_header">Location</string>

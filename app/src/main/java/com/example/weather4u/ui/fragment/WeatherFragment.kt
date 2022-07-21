@@ -2,6 +2,7 @@ package com.example.weather4u.ui.fragment
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,22 +11,26 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.work.OneTimeWorkRequestBuilder
 import com.example.weather4u.databinding.FragmentWeatherBinding
 import com.example.weather4u.model.dataclass.DailyItem
 import com.example.weather4u.model.dataclass.HourlyItem
-import com.example.weather4u.model.local.weatherRoom.WeatherResponse
+import com.example.weather4u.model.dataclass.WeatherResponse
 import com.example.weather4u.ui.adabter.currentWeather.CurrentAdapter
 import com.example.weather4u.ui.adabter.currentWeather.DailyAdapter
 import com.example.weather4u.ui.adabter.currentWeather.HourlyAdapter
 import com.example.weather4u.ui.viewModel.WeatherFragmentViewModel
 import com.example.weather4u.util.LocationPreferences.getCurrentLat
 import com.example.weather4u.util.LocationPreferences.getCurrentLong
+import com.example.weather4u.util.LocationPreferences.getSearchLat
+import com.example.weather4u.util.LocationPreferences.getSearchLong
+import com.example.weather4u.util.LocationPreferences.iSCurrentLocation
 import com.example.weather4u.util.Resource
-import com.example.weather4u.util.SettingFragmentPreference.getLat
-import com.example.weather4u.util.SettingFragmentPreference.getLong
-import com.example.weather4u.util.SettingFragmentPreference.iSCurrentLocation
+import com.example.weather4u.util.SettingFragmentPreference
+import com.example.weather4u.util.SettingFragmentPreference.isNotificationEnabled
 import com.example.weather4u.util.SettingFragmentPreference.loadLanguage
 import com.example.weather4u.util.SettingFragmentPreference.loadUnit
+import com.example.weather4u.util.workManger.WeatherWork
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -112,10 +117,12 @@ class WeatherFragment : Fragment() {
              lat = getCurrentLat(requireContext()).toDouble()
              lon = getCurrentLong(requireContext()).toDouble()
         } else {
-             lat = getLat(requireContext()).toDouble()
-             lon = getLong(requireContext()).toDouble()
+             lat = getSearchLat(requireContext()).toDouble()
+             lon = getSearchLong(requireContext()).toDouble()
         }
+     //   viewModel.createInputDataForWork(lat,lon,language,unit)
         viewModel.getWeather(lat, lon, unit, language)
+       viewModel.workNotification(requireContext(),lat, lon,language,unit)
     }
 
 

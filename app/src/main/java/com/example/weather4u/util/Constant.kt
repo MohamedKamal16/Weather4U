@@ -10,16 +10,14 @@ object Constant{
     const val BASE_URL = "https://api.openweathermap.org/"
     const val API_KEY = "2fa69c0eba706e881f5af9aabdf7698e"
     const val MINUTELY = "minutely"
+    const val PLACE_API_KEY = "AIzaSyDYU0FPpbhkdhQSj3n3vJ1SghZX_DrxcYk"
     //SharedPreferences
     const val SHARED_PREFERENCES_NAME="pref"
     const val LANGUAGE="language"
     const val UNIT="unit"
-
-
+    const val Location="location"
     //Location
     const val PERMISSIONS_REQUEST_LOCATION: Int = 99
-   // const val Location_update_Interval=5000L
-   // const val   FASTET_Location_Interval=2000L
     const val CURRENT_LATITUDE="currentLat"
     const val CURRENT_LONGITUDE="currentLon"
     const val Last_LATITUDE="lastLat"
@@ -29,13 +27,18 @@ object Constant{
     const val search_LATITUDE="sLat"
     const val search_LONGITUDE="sLon"
     const val CURRENT_LOCATION="currentLocation"
-
-
-
-    const val PLACE_API_KEY = "AIzaSyDYU0FPpbhkdhQSj3n3vJ1SghZX_DrxcYk"
-   // const val REQUEST_CODE: Int = 100
-
-
+    //Notification
+    const val NOTIFICATION_CHANNEL_NAME="WEATHER_CHANNEL"
+    const val NOTIFICATION_CHANNEL_DESCRIPTION="WEATHER_DESCRIPTION"
+    const val CHANNEL_ID = "WEATHER_ID"
+    const val NOTIFICATION_ID = 555
+    const val NOTIFICATION_TITLE = "Weather"
+    //worker Key
+    const val WORKER_LAT = "WORKER_LAT"
+    const val WORKER_LON = "WORKER_LON"
+    const val WORKER_Unit = "WORKER_Unit"
+    const val WORKER_Lang = "WORKER_Lang"
+    const val NOTIFICATION_WORK = "weather_notification_work"
 
     const val SplashTimeOut = 4000
 

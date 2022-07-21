@@ -32,7 +32,7 @@ class FavoriteFragment : Fragment() {
 
     private lateinit var binding: FragmentFavoriteBinding
     private lateinit var favoriteAdapter: FavoriteAdapter
-    private var favoriteList = mutableListOf<FavoriteEntity>()
+    private var favoriteList = mutableListOf<FavoriteEntity?>()
 
     private val viewModel: FavoriteFragmentViewModel by viewModels()
 
@@ -119,10 +119,10 @@ class FavoriteFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val favoriteEntity = favoriteAdapter.favoriteData[position]
-                viewModel.delete(favoriteEntity)
+                favoriteEntity?.let { viewModel.delete(it) }
                 Snackbar.make(view, "Successfully deleted article", Snackbar.LENGTH_SHORT).apply {
                     setAction("Undo") {
-                        viewModel.insertUpdate(favoriteEntity)
+                        favoriteEntity?.let { it1 -> viewModel.insertUpdate(it1) }
                     }
                     show()
                 }

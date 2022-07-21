@@ -27,19 +27,11 @@ object LocalDataModule {
         ROOM_DATABASE_NAME
     ).build()
 
-
-
-    @Singleton
-    @Provides
-    fun provideWeather(db: WeatherDataBase) = db.getWeatherDao()
-
     @Singleton
     @Provides
     fun provideFavorite(db: WeatherDataBase) = db.getFavoriteDao()
 
-    @Singleton
-    @Provides
-    fun provideAlert(db: WeatherDataBase) = db.getAlertDao()
+
 
     @Singleton
     @Provides

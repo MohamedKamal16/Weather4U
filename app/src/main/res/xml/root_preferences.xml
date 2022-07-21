@@ -40,7 +40,6 @@
     <PreferenceCategory
         android:icon="@drawable/t2"
         app:title="@string/language_header">
-
         <ListPreference
             android:defaultValue="en"
             android:entries="@array/language_entries"
@@ -48,7 +47,15 @@
             android:key="language"
             android:title="@string/language_title"
             app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
 
+    <PreferenceCategory android:layout_height="0dp">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:key="NOTIFICATION"
+            android:title="@string/NOTIFICATION" />
     </PreferenceCategory>
 
 

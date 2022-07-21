@@ -12,7 +12,7 @@ import com.example.weather4u.util.Constant.Fav_LATITUDE
 import com.example.weather4u.util.Constant.Fav_LONGITUDE
 
 
-class FavoriteAdapter( var favoriteData: MutableList<FavoriteEntity>) : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>()  {
+class FavoriteAdapter( var favoriteData: MutableList<FavoriteEntity?>) : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>()  {
 
     inner class FavoriteViewHolder(val binding: FavoriteRowBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -31,19 +31,16 @@ class FavoriteAdapter( var favoriteData: MutableList<FavoriteEntity>) : Recycler
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
         with(holder){
-            binding.favoriteTitleLbl.text=favoriteData[position].title
-
+            binding.favoriteTitleLbl.text=favoriteData[position]?.title
             itemView.setOnClickListener {
                 val bundle=Bundle().apply {
-                    putDouble(Fav_LATITUDE, favoriteData[position].lat!!)
-                    putDouble(Fav_LONGITUDE, favoriteData[position].lon!!)
+                    putDouble(Fav_LATITUDE, favoriteData[position]?.lat!!)
+                    putDouble(Fav_LONGITUDE, favoriteData[position]?.lon!!)
                 }
                 itemView.findNavController().navigate(R.id.favoriteWeatherFragment,bundle)
 
             }
         }
-
-
     }
 
     override fun getItemCount(): Int {

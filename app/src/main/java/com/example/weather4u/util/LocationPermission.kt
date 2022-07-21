@@ -15,9 +15,9 @@ object LocationPermission {
         //false if not
         if (
             ActivityCompat.checkSelfPermission(
-                context,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED ||
+                context, android.Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+            ||
             ActivityCompat.checkSelfPermission(
                 context,
                 android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -27,7 +27,6 @@ object LocationPermission {
         }
         return false
     }
-
 
 
     fun requestPermission(activity: Activity) {
@@ -41,13 +40,11 @@ object LocationPermission {
         )
     }
 
-    fun isLocationEnabled(context: Context):Boolean{
-        val locationManager=context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+    fun isLocationEnabled(context: Context): Boolean {
+        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
     }
-
-
 
 
 }
