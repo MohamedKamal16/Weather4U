@@ -59,6 +59,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
+        (activity as WeatherActivity).supportActionBar?.show()
         //place autocomplete
         Places.initialize(requireContext(), PLACE_API_KEY)
         val fieldList = listOf(Place.Field.ADDRESS, Place.Field.LAT_LNG, Place.Field.NAME)

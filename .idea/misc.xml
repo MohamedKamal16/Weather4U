@@ -5,16 +5,18 @@
       <map>
         <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/activity_add_alert.xml" value="0.33" />
         <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/activity_favorite_weather.xml" value="0.2" />
-        <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/activity_weather.xml" value="0.2" />
+        <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
+        <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/activity_weather.xml" value="0.25" />
         <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/alert__row.xml" value="0.5" />
-        <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/current_layout.xml" value="0.33" />
+        <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/current_layout.xml" value="0.2303370786516854" />
         <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/custom_notification.xml" value="0.75" />
-        <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/daily_row.xml" value="0.67" />
+        <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/daily_row.xml" value="0.33" />
         <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/favorite_row.xml" value="0.5" />
         <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/favorite_weather_fragment.xml" value="0.2" />
         <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/fragment_alert.xml" value="0.2" />
         <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/fragment_favorite.xml" value="0.2" />
-        <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/fragment_weather.xml" value="0.25" />
+        <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/fragment_splach_screen.xml" value="0.2" />
+        <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/fragment_weather.xml" value="0.31788079470198677" />
         <entry key="..\:/EditProjects/Weather4U/app/src/main/res/layout/hourly_row.xml" value="0.5" />
         <entry key="..\:/EditProjects/Weather4U/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
         <entry key="..\:/EditProjects/Weather4U/app/src/main/res/xml/root_preferences.xml" value="0.33" />

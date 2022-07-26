@@ -9,6 +9,10 @@ data class Current(
 	@Embedded(prefix = "rain_")
 	val rain: Rain? = null,
 
+	@field:SerializedName("snow")
+	@Embedded(prefix = "snow_")
+	val snow: Snow? = null,
+
 	@field:SerializedName("sunrise")
 	val sunrise: Int? = null,
 

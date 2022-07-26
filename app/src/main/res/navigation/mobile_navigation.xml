@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_weather">
+    app:startDestination="@id/splachScreenFragment">
 
     <fragment
         android:id="@+id/navigation_weather"
@@ -31,6 +31,16 @@
         android:name="com.example.weather4u.ui.fragment.FavoriteWeatherFragment"
         android:label="favorite_weather_fragment"
         tools:layout="@layout/favorite_weather_fragment" />
+    <fragment
+        android:id="@+id/splachScreenFragment"
+        android:name="com.example.weather4u.ui.fragment.SplachScreenFragment"
+        android:label="SplachScreenFragment" >
+        <action
+            android:id="@+id/action_splachScreenFragment_to_navigation_weather"
+            app:destination="@id/navigation_weather"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 
 </navigation>

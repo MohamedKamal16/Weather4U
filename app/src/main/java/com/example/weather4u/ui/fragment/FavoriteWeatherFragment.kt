@@ -13,6 +13,7 @@ import com.example.weather4u.databinding.FavoriteWeatherFragmentBinding
 import com.example.weather4u.model.dataclass.DailyItem
 import com.example.weather4u.model.dataclass.HourlyItem
 import com.example.weather4u.model.dataclass.WeatherResponse
+import com.example.weather4u.ui.activity.WeatherActivity
 import com.example.weather4u.ui.adabter.currentWeather.CurrentAdapter
 import com.example.weather4u.ui.adabter.currentWeather.DailyAdapter
 import com.example.weather4u.ui.adabter.currentWeather.HourlyAdapter
@@ -53,6 +54,7 @@ class FavoriteWeatherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as WeatherActivity).supportActionBar?.hide()
         getData()
         init()
         observe()
@@ -116,7 +118,7 @@ class FavoriteWeatherFragment : Fragment() {
 
         with(binding) {
             recyclerViewDaily.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 adapter = dailyListAdapter
             }
 

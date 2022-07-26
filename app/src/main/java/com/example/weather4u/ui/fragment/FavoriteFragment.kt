@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weather4u.databinding.FragmentFavoriteBinding
 import com.example.weather4u.model.local.favorite.FavoriteEntity
+import com.example.weather4u.ui.activity.WeatherActivity
 import com.example.weather4u.ui.adabter.favorite.FavoriteAdapter
 import com.example.weather4u.ui.viewModel.FavoriteFragmentViewModel
 import com.example.weather4u.util.Constant.PLACE_API_KEY
@@ -75,6 +76,7 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as WeatherActivity).supportActionBar?.show()
         floatingButton()
         init()
         swapToDelete(view)

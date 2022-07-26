@@ -5,7 +5,9 @@
     android:id="@+id/container"
     tools:context=".ui.activity.WeatherActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/b4"
+    >
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
