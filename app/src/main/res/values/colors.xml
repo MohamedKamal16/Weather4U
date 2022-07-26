@@ -14,5 +14,10 @@
     <color name="BrandeisBlue">#006cff</color>
     <color name="ProcessCyan">#0fb5ee</color>
     <color name="VividSkyBlue">#00d3f9</color>
-    <color name="Gray">#323232</color>
+    <!--<color name="Gray">#323232</color>-->
+    <!--<color name="Gray">#0628DF</color>-->
+    <color name="Gray">#2196F3</color>
+    <!--<color name="trans">#426075EA</color>-->
+    <color name="trans">#42FFFFFF</color>
+
 </resources>

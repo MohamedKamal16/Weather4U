@@ -29,14 +29,9 @@ class DailyAdapter(private var dailyList: MutableList<DailyItem?>) : RecyclerVie
 
     override fun onBindViewHolder(holder: DailyViewHolder, position: Int) {
         with(holder.binding){
-            dailyTime.text = Time.timeConverter(dailyList[position]?.sunrise?.toLong())
             dailyTime2.text =Time.timeConverterToDate(dailyList[position]?.dt)
             degreeMax.text = (dailyList[position]?.temp?.day)?.toInt().toString()
             degreeMin.text = (dailyList[position]?.temp?.min)?.toInt().toString()
-            tvWindValue.text = (dailyList[position]?.windSpeed)?.toInt().toString()
-            tvHumValue.text = (dailyList[position]?.humidity).toString()
-            tvCloudValue.text = (dailyList[position]?.clouds).toString()
-            tvPressvalue.text = (dailyList[position]?.pressure).toString()
             tvCond.text = (dailyList[position]?.weather?.get(0)?.description).toString()
             Glide.with(imageView2.context).load(Icon.getIcon(dailyList[position]?.weather?.get(0)?.icon))
                     .into(imageView2)
@@ -44,7 +39,13 @@ class DailyAdapter(private var dailyList: MutableList<DailyItem?>) : RecyclerVie
         }
     }
 
-
+/*
+      dailyTime.text = Time.timeConverter(dailyList[position]?.sunrise?.toLong())
+      tvWindValue.text = (dailyList[position]?.windSpeed)?.toInt().toString()
+      tvHumValue.text = (dailyList[position]?.humidity).toString()
+      tvCloudValue.text = (dailyList[position]?.clouds).toString()
+      tvPressvalue.text = (dailyList[position]?.pressure).toString()
+      */
 
 
 

@@ -11,7 +11,6 @@ object Icon {
         fun getIcon(icon: String?): String {
             return "http://openweathermap.org/img/w/${icon}.png"
         }
-
     fun stringToBitMap(image: String?): Bitmap? {
         return try {
             val encodeByte: ByteArray = Base64.decode(image, Base64.DEFAULT)

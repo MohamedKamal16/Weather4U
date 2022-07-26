@@ -3,60 +3,58 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/hourly_Weather"
-    android:layout_width="175dp"
-    android:layout_height="150dp"
+    android:layout_width="100dp"
+    android:layout_height="160dp"
     android:layout_gravity="center"
     android:layout_margin="10dp"
     app:cardCornerRadius="20dp"
-    app:cardBackgroundColor="@color/white"
-    >
+    app:cardBackgroundColor="@color/trans"
+    app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/hourly_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:hapticFeedbackEnabled="true"
-        >
+        android:hapticFeedbackEnabled="true">
 
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="64dp"
-            android:layout_height="68dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.139"
+            app:layout_constraintTop_toBottomOf="@+id/tv_condHr"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
             android:id="@+id/hourly_timeHr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginTop="10dp"
             android:padding="1dp"
             android:text="20:20"
             android:textColor="@color/black"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView3"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.122" />
+            app:layout_constraintEnd_toEndOf="@+id/imageView3"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_condHr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:padding="1dp"
             android:text="Cond"
             android:textColor="@color/black"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_maxHr"
+            app:layout_constraintEnd_toEndOf="@+id/hourly_timeHr"
             app:layout_constraintStart_toStartOf="@+id/hourly_timeHr"
             app:layout_constraintTop_toBottomOf="@+id/hourly_timeHr" />
 
@@ -69,134 +67,23 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_maxHr"
+            app:layout_constraintEnd_toEndOf="@+id/imageView3"
             app:layout_constraintStart_toEndOf="@+id/tv_maxHr"
-            app:layout_constraintTop_toBottomOf="@+id/hourly_timeHr"
+            app:layout_constraintTop_toTopOf="@+id/tv_maxHr"
             app:layout_constraintVertical_bias="0.323" />
-
-        <ImageView
-            android:id="@+id/windImgHr"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/wind"
-            app:layout_constraintBottom_toTopOf="@+id/pressImgHr"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/pressImgHr"
-            app:layout_constraintTop_toBottomOf="@+id/tv_maxHr"
-            app:layout_constraintVertical_bias="0.555" />
-
-        <ImageView
-            android:id="@+id/cloudImgHr"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/clouds"
-            app:layout_constraintBottom_toTopOf="@+id/humImgHr"
-            app:layout_constraintEnd_toStartOf="@+id/tv_cloudValueHr"
-            app:layout_constraintStart_toStartOf="@+id/humImgHr"
-            app:layout_constraintTop_toTopOf="@+id/windImgHr"
-            app:layout_constraintVertical_bias="0.111" />
-
-        <TextView
-            android:id="@+id/tv_windValueHr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:text="20"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/windImgHr"
-            app:layout_constraintTop_toTopOf="@+id/windImgHr" />
 
         <TextView
             android:id="@+id/tv_maxHr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/Temperature"
             android:textColor="@color/black"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tv_condHr"
-            app:layout_constraintTop_toTopOf="@+id/degree_maxHr" />
-
-        <ImageView
-            android:id="@+id/humImgHr"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginEnd="35dp"
-            android:src="@drawable/humidity"
-            app:layout_constraintBottom_toBottomOf="@+id/pressImgHr"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_humValueHr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="3dp"
-            android:text="20"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/tv_humUnitHr"
-            app:layout_constraintTop_toTopOf="@+id/humImgHr" />
-
-        <TextView
-            android:id="@+id/tv_humUnitHr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="%"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/tv_cloudUnitHr"
-            app:layout_constraintTop_toTopOf="@+id/tv_humValueHr" />
-
-        <TextView
-            android:id="@+id/tv_cloudValueHr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="2dp"
-            android:text="20"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/tv_cloudUnitHr"
-            app:layout_constraintTop_toTopOf="@+id/cloudImgHr" />
-
-        <TextView
-            android:id="@+id/tv_cloudUnitHr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:text="%"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_cloudValueHr" />
-
-        <ImageView
-            android:id="@+id/pressImgHr"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginStart="13dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/pressure"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_pressvalueHr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:text="2000"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/pressImgHr"
-            app:layout_constraintTop_toTopOf="@+id/pressImgHr" />
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,10 +25,12 @@ import com.example.weather4u.util.LocationPreferences.setLastLocationPreference
 import com.example.weather4u.util.SettingFragmentPreference.isNotificationEnabled
 import com.example.weather4u.util.SettingFragmentPreference.onAttach
 import com.example.weather4u.util.Time.getAppTime
+import com.example.weather4u.util.Time.isTimeAmOrPm
 import com.google.android.gms.location.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -49,14 +51,14 @@ class WeatherActivity : AppCompatActivity() {
         navView = binding.navView
         navBind()
         getCurrentLocation()
-        getAppTime()
-        Log.d("Time","time is "+getAppTime())
+        changeAppBackGround()
     }
 
     private fun navBind() {
         navController = findNavController(R.id.newsNavHostFragment)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.favoriteWeatherFragment) {
+            if (destination.id == R.id.favoriteWeatherFragment
+                ||destination.id == R.id.splachScreenFragment) {
                    binding.navView.visibility = View.GONE
             } else {
                 binding.navView.visibility = View.VISIBLE
@@ -137,8 +139,6 @@ class WeatherActivity : AppCompatActivity() {
         }
     }
 
-
-
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -163,6 +163,12 @@ class WeatherActivity : AppCompatActivity() {
 
     override fun attachBaseContext(newBase: Context?) {
         super.attachBaseContext(newBase?.let { onAttach(it) })
+    }
+    private fun changeAppBackGround(){
+         when(isTimeAmOrPm()){
+             "AM"->binding.container.background=getDrawable(R.drawable.b4)
+            // "PM"->binding.container.background=getDrawable(R.drawable.mjpg)
+         }
     }
 }
 

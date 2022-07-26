@@ -11,26 +11,24 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.work.OneTimeWorkRequestBuilder
 import com.example.weather4u.databinding.FragmentWeatherBinding
 import com.example.weather4u.model.dataclass.DailyItem
 import com.example.weather4u.model.dataclass.HourlyItem
 import com.example.weather4u.model.dataclass.WeatherResponse
+import com.example.weather4u.ui.activity.WeatherActivity
 import com.example.weather4u.ui.adabter.currentWeather.CurrentAdapter
 import com.example.weather4u.ui.adabter.currentWeather.DailyAdapter
 import com.example.weather4u.ui.adabter.currentWeather.HourlyAdapter
 import com.example.weather4u.ui.viewModel.WeatherFragmentViewModel
+import com.example.weather4u.util.Animation.changeWeather
 import com.example.weather4u.util.LocationPreferences.getCurrentLat
 import com.example.weather4u.util.LocationPreferences.getCurrentLong
 import com.example.weather4u.util.LocationPreferences.getSearchLat
 import com.example.weather4u.util.LocationPreferences.getSearchLong
 import com.example.weather4u.util.LocationPreferences.iSCurrentLocation
 import com.example.weather4u.util.Resource
-import com.example.weather4u.util.SettingFragmentPreference
-import com.example.weather4u.util.SettingFragmentPreference.isNotificationEnabled
 import com.example.weather4u.util.SettingFragmentPreference.loadLanguage
 import com.example.weather4u.util.SettingFragmentPreference.loadUnit
-import com.example.weather4u.util.workManger.WeatherWork
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,11 +45,10 @@ class WeatherFragment : Fragment() {
     private var weatherItem: WeatherResponse? = null
     private var unit = String()
 
-       private var lat = 0.0
-       private var lon = 0.0
-       private var language = String()
-       private var isCurrentLocation = true
-
+    private var lat = 0.0
+    private var lon = 0.0
+    private var language = String()
+    private var isCurrentLocation = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,9 +61,11 @@ class WeatherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as WeatherActivity).supportActionBar?.hide()
         getData()
         init()
         observe()
+
     }
 
     private fun observe() {
@@ -82,7 +81,9 @@ class WeatherFragment : Fragment() {
                         dailyListAdapter.updateDailyList(dailyList)
                         hourlyListAdapter.updateHoursList(hourlyList)
                         currentAdapter.updateCurrent(weatherItem!!)
-
+                        // animation work but after add xml but no need
+                        //   changeWeather(binding.WeatherAnimation,weatherItem?.current?.weather?.get(0)?.main)
+                        Log.d("Weather", "observe:${weatherItem?.current?.weather?.get(0)?.main} ")
                     }
                 }
                 is Resource.Error -> {
@@ -96,7 +97,6 @@ class WeatherFragment : Fragment() {
                     showProgressBar()
                 }
             }
-
         })
     }
 
@@ -109,31 +109,28 @@ class WeatherFragment : Fragment() {
     }
 
     private fun getData() {
-         unit = loadUnit(requireContext())
-       // Log.i("call", unit)
-         language = loadLanguage(requireContext()).toString()
-         isCurrentLocation = iSCurrentLocation(requireContext())
+        unit = loadUnit(requireContext())
+        language = loadLanguage(requireContext()).toString()
+        isCurrentLocation = iSCurrentLocation(requireContext())
         if (isCurrentLocation) {
-             lat = getCurrentLat(requireContext()).toDouble()
-             lon = getCurrentLong(requireContext()).toDouble()
+            lat = getCurrentLat(requireContext()).toDouble()
+            lon = getCurrentLong(requireContext()).toDouble()
         } else {
-             lat = getSearchLat(requireContext()).toDouble()
-             lon = getSearchLong(requireContext()).toDouble()
+            lat = getSearchLat(requireContext()).toDouble()
+            lon = getSearchLong(requireContext()).toDouble()
         }
-     //   viewModel.createInputDataForWork(lat,lon,language,unit)
         viewModel.getWeather(lat, lon, unit, language)
-       viewModel.workNotification(requireContext(),lat, lon,language,unit)
+        viewModel.workNotification(requireContext(), lat, lon, language, unit)
     }
 
 
     private fun init() {
         dailyListAdapter = DailyAdapter(dailyList)
-       hourlyListAdapter = HourlyAdapter(hourlyList)
-        currentAdapter = CurrentAdapter(weatherItem, requireContext(),unit )
-
+        hourlyListAdapter = HourlyAdapter(hourlyList)
+        currentAdapter = CurrentAdapter(weatherItem, requireContext(), unit)
         with(binding) {
             recyclerViewDaily.apply {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 adapter = dailyListAdapter
             }
 
@@ -147,17 +144,5 @@ class WeatherFragment : Fragment() {
             }
             binding.pbLoading.visibility = View.VISIBLE
         }
-
     }
-
-    /* //Current Weather Data ui
-       private fun currentDetail(weatherResponse: WeatherResponse) {
-           data_humidity.text = weatherResponse.current?.humidity.toString()
-           data_visibility.text = weatherResponse.current?.visibility.toString()
-           data_pressure.text = weatherResponse.current?.pressure.toString()
-           feels_like.text = weatherResponse.current?.feelsLike.toString()
-       }*/
-
-
 }
-

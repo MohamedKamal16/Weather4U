@@ -8,7 +8,6 @@ import androidx.core.app.ActivityCompat
 import com.example.weather4u.util.Constant.PERMISSIONS_REQUEST_LOCATION
 
 object LocationPermission {
-
     fun checkPermission(context: Context): Boolean {
         //this function will return a boolean
         //true: if we have permission
@@ -28,7 +27,6 @@ object LocationPermission {
         return false
     }
 
-
     fun requestPermission(activity: Activity) {
         //this function will allows us to tell the user to requesut the necessary permsiion if they are not garented
         ActivityCompat.requestPermissions(
@@ -39,12 +37,9 @@ object LocationPermission {
             ), PERMISSIONS_REQUEST_LOCATION
         )
     }
-
     fun isLocationEnabled(context: Context): Boolean {
         val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
     }
-
-
 }
